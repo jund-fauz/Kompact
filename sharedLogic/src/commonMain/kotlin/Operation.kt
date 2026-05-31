@@ -23,7 +23,7 @@ fun Char.operate(vararg numbers: Any): Number {
 
 fun operation(operationInString: String) {
     val cleanedOperation = operationInString.replace("/[^1-9 ()^%/*-+]/g".toRegex(), "")
-    var divider = operationInString.split("/[1-9]+/g".toRegex()).maxOf {
+    var divider = cleanedOperation.split("/[1-9]+/g".toRegex()).maxOf {
         val numbers = it.split('.')
         if (numbers.size == 2) numbers[1].length else if (numbers.size == 1) 0 else throw NumberFormatException("Format angka tidak valid")
     }
